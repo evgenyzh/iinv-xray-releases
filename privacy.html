@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IINV — Политика конфиденциальности / Privacy Policy</title>
+<style>
+  :root { color-scheme: dark light; }
+  body {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 24px 20px 64px;
+    font: 16px/1.6 -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    background: #121212; color: #e6e6e6;
+  }
+  h1 { font-size: 26px; }
+  h2 { font-size: 20px; margin-top: 32px; border-bottom: 1px solid #333; padding-bottom: 6px; }
+  h3 { font-size: 17px; margin-top: 22px; }
+  ul { padding-left: 22px; }
+  code { background: #1f1f1f; padding: 1px 5px; border-radius: 4px; }
+  .muted { color: #9a9a9a; font-size: 14px; }
+  hr { border: none; border-top: 1px solid #333; margin: 40px 0; }
+</style>
+</head>
+<body>
+
+<h1>Политика конфиденциальности приложения IINV</h1>
+<p class="muted">Дата последнего обновления: 15 октября 2026 г.<br>
+Контакт: <a href="mailto:evgenyzh@gmail.com">evgenyzh@gmail.com</a></p>
+
+<h2>Коротко</h2>
+<p>Приложение IINV — локальный прокси-клиент. Приложение <strong>не собирает персональные данные</strong>,
+не использует аналитику, рекламу и трекеры, не передаёт данные третьим лицам и не имеет собственных
+серверов. Все настройки и журналы хранятся только на вашем устройстве.</p>
+
+<h2>Какие данные обрабатывает приложение</h2>
+<h3>Данные, которые остаются на устройстве</h3>
+<ul>
+  <li>профили подключения и конфигурации, загруженные с адресов, которые вы указали;
+  <li>файлы геоданных (geoip.dat / geosite.dat), загружаемые из открытых источников;
+  <li>журналы работы приложения — только локально, для диагностики;
+  <li>настройки приложения (выбранный профиль, таймеры обновлений и т. п.).
+</ul>
+<p>Эти данные не покидают устройство и удаляются вместе с приложением.</p>
+
+<h3>Сетевые соединения приложения</h3>
+<ul>
+  <li><strong>Сервер конфигурации</strong> — URL, который вы указали в профиле (например, ссылка подписки
+      вашего провайдера). Приложение обращается к нему, чтобы загрузить конфигурацию.</li>
+  <li><strong>Источники геоданных</strong> — открытые адреса (например, GitHub), откуда загружаются
+      geoip.dat и geosite.dat.</li>
+  <li><strong>Проверка обновлений</strong> — только в сборках, распространяемых через GitHub.
+      В версиях для Google Play проверка обновлений отключена.</li>
+</ul>
+
+<h3>Сетевой трафик и журналы</h3>
+<p>Приложение направляет сетевой трафик через сервер, который <strong>вы сами выбрали и настроили</strong>.
+Разработчик приложения не предоставляет серверы, не видит и не хранит ваш трафик. Журналы работы
+ядра формируются локально на устройстве и не передаются разработчику или третьим лицам.
+Содержимое журналов зависит от конфигурации, которую вы используете; его можно отключить в конфигурации.</p>
+
+<h2>Разрешения и зачем они нужны</h2>
+<ul>
+  <li><strong>Доступ в интернет</strong> — загрузка конфигураций и работа прокси-клиента.</li>
+  <li><strong>Уведомления и foreground-сервис</strong> — показывать состояние подключения и не давать
+      системе завершить работу сервиса.</li>
+  <li><strong>Показ запроса на отключение оптимизации батареи</strong> — чтобы система не разрывала
+      соединение (по вашему выбору).</li>
+  <li><strong>WRITE_SECURE_SETTINGS</strong> (необязательно, выдаётся только вручную через ADB) —
+      автоматическая настройка системного прокси. Без него приложение полностью работоспособно.</li>
+</ul>
+
+<h2>Сторонние сервисы</h2>
+<p>Приложение не содержит рекламных и аналитических SDK. Загружаемые конфигурации и геоданные
+приходят с серверов, выбранных вами или указанных в приложении как открытые источники; на их
+обработку распространяются политики соответствующих владельцев.</p>
+
+<h2>Дети</h2>
+<p>Приложение не предназначено для детей и не собирает данные о них.</p>
+
+<h2>Изменения политики</h2>
+<p>Актуальная версия политики всегда доступна по этому адресу. При существенных изменениях
+мы обновим дату в начале документа.</p>
+
+<h2>Контакты</h2>
+<p>По любым вопросам: <a href="mailto:evgenyzh@gmail.com">evgenyzh@gmail.com</a>.</p>
+
+<hr>
+
+<h1 id="en">IINV Privacy Policy</h1>
+<p class="muted">Last updated: October 15, 2026<br>
+Contact: <a href="mailto:evgenyzh@gmail.com">evgenyzh@gmail.com</a></p>
+
+<h2>Summary</h2>
+<p>IINV is a local proxy client. The app <strong>does not collect personal data</strong>, contains no
+analytics, ads or trackers, does not share data with third parties and operates no servers of its own.
+All settings and logs are stored on your device only.</p>
+
+<h2>Data processed by the app</h2>
+<h3>Data kept on the device</h3>
+<ul>
+  <li>connection profiles and configurations fetched from URLs you provide;</li>
+  <li>geo data files (geoip.dat / geosite.dat) downloaded from open sources;</li>
+  <li>app logs — stored locally for diagnostics only;</li>
+  <li>app settings (selected profile, update intervals, etc.).</li>
+</ul>
+<p>This data never leaves the device and is removed with the app.</p>
+
+<h3>Network connections made by the app</h3>
+<ul>
+  <li><strong>Your configuration server</strong> — the URL you set in a profile (e.g. your provider's
+      subscription link), used to fetch the configuration.</li>
+  <li><strong>Geo data sources</strong> — open addresses (e.g. GitHub) used to download geoip.dat and
+      geosite.dat.</li>
+  <li><strong>Update checks</strong> — only in builds distributed via GitHub. Update checks are disabled
+      in Google Play builds.</li>
+</ul>
+
+<h3>Traffic and logs</h3>
+<p>The app routes network traffic through a server that <strong>you choose and configure yourself</strong>.
+The developer provides no servers and cannot see or store your traffic. Core logs are produced locally
+on the device and are not sent to the developer or any third party. Log content depends on your
+configuration and can be disabled in it.</p>
+
+<h2>Permissions and why they are needed</h2>
+<ul>
+  <li><strong>Internet access</strong> — fetching configurations and running the proxy client.</li>
+  <li><strong>Notifications and foreground service</strong> — showing connection state and keeping the
+      service alive.</li>
+  <li><strong>Battery optimization exemption request</strong> — so the system does not drop the
+      connection (your choice).</li>
+  <li><strong>WRITE_SECURE_SETTINGS</strong> (optional, granted manually via ADB only) — automatic
+      system proxy setup. The app is fully functional without it.</li>
+</ul>
+
+<h2>Third-party services</h2>
+<p>The app contains no advertising or analytics SDKs. Configurations and geo data come from servers
+you choose or that are listed as open sources; their handlers' policies apply to those requests.</p>
+
+<h2>Children</h2>
+<p>The app is not intended for children and does not collect data about them.</p>
+
+<h2>Policy changes</h2>
+<p>The current version of this policy is always available at this URL. For material changes we will
+update the date at the top of the document.</p>
+
+<h2>Contact</h2>
+<p>For any questions: <a href="mailto:evgenyzh@gmail.com">evgenyzh@gmail.com</a>.</p>
+
+</body>
+</html>
