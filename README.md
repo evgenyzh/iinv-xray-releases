@@ -34,10 +34,10 @@ ef9fdd0f8b028ac28535dbfd58f947fbeeca11b28093d10759c93574b79b6cb9  iinv-lite-v3.1
 ## Скриншоты
 
 <p align="center">
-  <img src="assets/screen-ru-main.png" width="235" alt="Главный экран">
-  <img src="assets/screen-ru-profiles.png" width="235" alt="Профили">
-  <img src="assets/screen-ru-network.png" width="235" alt="Монитор сети">
-  <img src="assets/screen-ru-theme.png" width="235" alt="Настройки темы">
+  <img src="assets/screen-ru-main.png" width="205" alt="Главный экран">
+  <img src="assets/screen-ru-profiles.png" width="205" alt="Профили">
+  <img src="assets/screen-ru-network.png" width="205" alt="Монитор сети">
+  <img src="assets/screen-ru-theme.png" width="205" alt="Настройки темы">
 </p>
 
 ## Возможности
@@ -101,10 +101,10 @@ config: system-wide VPN (TUN) or a local SOCKS/HTTP proxy. No accounts, ads or
 tracking.
 
 <p align="center">
-  <img src="assets/screen-en-main.png" width="235" alt="Home screen">
-  <img src="assets/screen-en-profiles.png" width="235" alt="Profiles">
-  <img src="assets/screen-en-network.png" width="235" alt="Network monitor">
-  <img src="assets/screen-en-theme.png" width="235" alt="Theme settings">
+  <img src="assets/screen-en-main.png" width="205" alt="Home screen">
+  <img src="assets/screen-en-profiles.png" width="205" alt="Profiles">
+  <img src="assets/screen-en-network.png" width="205" alt="Network monitor">
+  <img src="assets/screen-en-theme.png" width="205" alt="Theme settings">
 </p>
 
 ### Features
