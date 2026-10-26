@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IINV — Android-клиент для Xray</title>
+  <meta name="description" content="IINV — Android-клиент для Xray: системный VPN (TUN) или локальный SOCKS/HTTP-прокси. Скачать APK, хеши и описания релизов.">
+  <link rel="icon" href="assets/icon-512.png">
+  <style>
+    :root {
+      --bg: #f1f4f2;
+      --card: #ffffff;
+      --text: #14201d;
+      --muted: #5b6b66;
+      --line: #d7e0dc;
+      --accent: #0f766e;
+      --accent-text: #ffffff;
+      --code: #e8efec;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0b1210;
+        --card: #121c19;
+        --text: #e8f0ed;
+        --muted: #9cb0a9;
+        --line: #22332e;
+        --accent: #74c63a;
+        --accent-text: #0b1210;
+        --code: #0e1714;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    a { color: var(--accent); }
+    .wrap { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+    .hero {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding-top: 56px;
+      padding-bottom: 28px;
+    }
+    .hero img { width: 84px; height: 84px; }
+    h1 { margin: 0; font-size: 42px; letter-spacing: -0.02em; }
+    .tagline { margin: 6px 0 0; color: var(--muted); max-width: 640px; }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 22px;
+    }
+    .version-line { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .pill {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: var(--accent-text);
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .muted { color: var(--muted); font-size: 14px; }
+    .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
+    .btn {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 8px;
+      padding: 12px 18px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .btn small { font-weight: 400; color: var(--muted); }
+    .btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-text); }
+    .btn.primary small { color: var(--accent-text); opacity: 0.8; }
+    details { margin-top: 18px; }
+    summary { cursor: pointer; color: var(--muted); font-size: 14px; }
+    pre {
+      background: var(--code);
+      padding: 12px;
+      border-radius: 10px;
+      overflow-x: auto;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+    h2 { font-size: 24px; margin: 40px 0 16px; }
+    .shots {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+    .shots img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      display: block;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 12px;
+    }
+    .grid .card { padding: 18px; }
+    .grid h3 { margin: 0 0 6px; font-size: 17px; }
+    .grid p { margin: 0; color: var(--muted); font-size: 15px; }
+    ol { padding-left: 22px; }
+    ol li { margin: 8px 0; }
+    footer {
+      margin-top: 52px;
+      padding: 24px 0 48px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 14px;
+    }
+    footer a { color: var(--muted); }
+    @media (max-width: 640px) {
+      .hero { padding-top: 36px; }
+      h1 { font-size: 34px; }
+      .shots { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+  <header class="wrap hero">
+    <img src="assets/icon-512.png" alt="IINV">
+    <div>
+      <h1>IINV</h1>
+      <p class="tagline">
+        Android-клиент для Xray: системный VPN (TUN) или локальный
+        SOCKS/HTTP-прокси. Работает с вашей подпиской или JSON-конфигом.
+        Без аккаунтов, рекламы и трекинга.
+      </p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="card" id="latest">
+      <div class="version-line">
+        <span class="pill" id="version">Последний релиз</span>
+        <span class="muted" id="date"></span>
+      </div>
+      <div class="actions">
+        <a class="btn primary" id="full-link" href="https://github.com/evgenyzh/iinv-xray-releases/releases/latest">
+          Full <small id="full-size">TUN + proxy</small>
+        </a>
+        <a class="btn" id="lite-link" href="https://github.com/evgenyzh/iinv-xray-releases/releases/latest">
+          Lite <small id="lite-size">proxy only</small>
+        </a>
+      </div>
+      <details>
+        <summary>SHA-256</summary>
+        <pre id="hashes">Смотрите SHA256SUMS.txt в последнем релизе.</pre>
+      </details>
+    </section>
+
+    <h2>Скриншоты</h2>
+    <div class="shots">
+      <img src="assets/screen-ru-main.png" alt="Главный экран" loading="lazy">
+      <img src="assets/screen-ru-profiles.png" alt="Профили" loading="lazy">
+      <img src="assets/screen-ru-network.png" alt="Монитор сети" loading="lazy">
+      <img src="assets/screen-ru-theme.png" alt="Настройки темы" loading="lazy">
+    </div>
+
+    <h2>Возможности</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Два режима</h3>
+        <p>Системный VPN (TUN) и локальный SOCKS/HTTP-прокси на одном порту.</p>
+      </div>
+      <div class="card">
+        <h3>Подписки</h3>
+        <p>VLESS, VMess, Trojan, Shadowsocks, SOCKS/HTTP, Hysteria2, Clash YAML и JSON.</p>
+      </div>
+      <div class="card">
+        <h3>Шаблоны и diff</h3>
+        <p>Порты, routing и DNS сохраняются при обновлении; локальные правки не затираются.</p>
+      </div>
+      <div class="card">
+        <h3>Мониторинг</h3>
+        <p>Статистика трафика, состояние серверов и управление балансировщиками.</p>
+      </div>
+      <div class="card">
+        <h3>Темы</h3>
+        <p>Режим (авто / светлая / тёмная) и стиль (Techno / Strict) отдельно.</p>
+      </div>
+      <div class="card">
+        <h3>Приватность</h3>
+        <p>Без рекламы, аналитики и трекеров. Настройки и журналы остаются на устройстве.</p>
+      </div>
+    </div>
+
+    <h2>Установка</h2>
+    <ol>
+      <li>Скачайте APK: <b>Full</b> — TUN и локальный прокси, <b>Lite</b> — только локальный прокси.</li>
+      <li>Разрешите установку из этого источника, если Android попросит.</li>
+      <li>Откройте APK и установите. Серверы не предоставляются: нужна ваша подписка или конфиг.</li>
+      <li>Требуется Android 8.0 или новее.</li>
+    </ol>
+    <p class="muted">
+      Lite также публикуется в Google Play (закрытое тестирование). Подписи
+      GitHub- и Play-сборок различаются: при смене канала нужна переустановка.
+    </p>
+
+    <h2>English</h2>
+    <p class="muted">
+      IINV is an Android client for Xray: system-wide VPN (TUN) or a local
+      SOCKS/HTTP proxy. It works with your own subscription or JSON config.
+      No accounts, ads or tracking. Full includes TUN, Lite is proxy-only.
+      Android 8.0+. See the
+      <a href="https://github.com/evgenyzh/iinv-xray-releases">releases page</a>
+      for downloads and checksums.
+    </p>
+  </main>
+
+  <footer class="wrap">
+    <a href="https://github.com/evgenyzh/iinv-xray-releases">GitHub</a> ·
+    <a href="https://github.com/evgenyzh/iinv-xray-releases/releases">Все релизы</a> ·
+    <a href="privacy.html">Политика конфиденциальности</a>
+    <p>Сборки собираются автоматически из тегов. SHA-256 и описания релизов обновляются вместе с релизом.</p>
+  </footer>
+
+  <script>
+    (function () {
+      var repo = "https://github.com/evgenyzh/iinv-xray-releases";
+      fetch("version.json", { cache: "no-store" })
+        .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
+        .then(function (data) {
+          var tag = (data.releaseUrl || "").split("/").pop();
+          document.getElementById("version").textContent = "IINV " + data.version;
+          document.getElementById("date").textContent = data.publishedAt || "";
+          ["full", "lite"].forEach(function (key) {
+            var asset = data.assets && data.assets[key];
+            if (!asset) return;
+            var link = document.getElementById(key + "-link");
+            link.href = repo + "/releases/download/" + tag + "/" + asset.name;
+            document.getElementById(key + "-size").textContent =
+              (asset.size / 1048576).toFixed(1) + " MB";
+          });
+          if (data.assets) {
+            document.getElementById("hashes").textContent = ["full", "lite"]
+              .map(function (key) {
+                var a = data.assets[key];
+                return a ? a.sha256 + "  " + a.name : "";
+              })
+              .filter(Boolean)
+              .join("\n");
+          }
+        })
+        .catch(function () { /* keep the static fallback */ });
+    })();
+  </script>
+</body>
+</html>
