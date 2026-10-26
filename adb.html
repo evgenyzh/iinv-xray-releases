@@ -209,6 +209,13 @@
       запускает shell-сервис с правами ADB. Нужен Android 11+ и Wi-Fi, root не
       требуется.
     </p>
+    <div class="card">
+      <strong>В IINV 3.2.0 проще:</strong> откройте мастер разрешений
+      (баннер на главной или «Сеть» → «Дать разрешение»), выберите Shizuku и
+      следуйте подсказкам. Приложение само запустит Shizuku-сервис и выдаст
+      разрешение — Termux и <code>rish</code> не нужны. Инструкция ниже — если
+      мастер не сработал.
+    </div>
     <ol>
       <li>
         Установите Shizuku из Google Play или с
@@ -403,6 +410,13 @@ adb shell appops set cc.iinv.app android:get_usage_stats deny</code></pre>
       shell service with ADB privileges. It requires Android 11+ and Wi-Fi; no
       root.
     </p>
+    <div class="card">
+      <strong>IINV 3.2.0 makes this easier:</strong> open the permission wizard
+      (the home banner or Network → Grant access), choose Shizuku and follow the
+      prompts. IINV starts the Shizuku service and grants the permission itself;
+      Termux and <code>rish</code> are not needed. The steps below are a manual
+      fallback.
+    </div>
     <ol>
       <li>
         Install Shizuku from Google Play or

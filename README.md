@@ -52,6 +52,8 @@ SHA-256:
   можно применить версию провайдера или оставить свою.
 - **Автопрокси**: включает системный прокси при подключении. Нужно одноразовое
   разрешение через ADB или Shizuku — [инструкция](https://evgenyzh.github.io/iinv-xray-releases/adb.html).
+- **Мастер разрешений**: Shizuku без компьютера или ADB с ПК, подсказки по
+  режиму разработчика, Wi-Fi- и USB-отладке, копирование команд.
 - **Мониторинг**: статистика трафика, состояние серверов и управление
   балансировщиками.
 - **Темы**: режим (авто / светлая / тёмная) и стиль (Techno / Strict)
@@ -120,6 +122,8 @@ tracking.
   the provider version or keep yours.
 - **Auto-proxy**: sets the system proxy when the connection starts. Requires a
   one-time ADB or Shizuku grant — [instructions](https://evgenyzh.github.io/iinv-xray-releases/adb.html#english).
+- **Permission wizard**: Shizuku without a computer or ADB with a PC, with hints
+  for developer options, wireless/USB debugging and copyable commands.
 - **Monitoring**: traffic stats, server state and balancer control.
 - **Themes**: mode (auto / light / dark) and style (Techno / Strict) are
   configured separately.
