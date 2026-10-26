@@ -128,11 +128,15 @@
 
     <h2>Что понадобится</h2>
     <ul>
-      <li>Компьютер с Windows, macOS или Linux.</li>
-      <li>Кабель USB и включённая отладка по USB.</li>
+      <li>
+        Компьютер с Windows, macOS или Linux — или Shizuku на самом телефоне
+        (Android 11+).
+      </li>
+      <li>Кабель USB и отладка по USB — или беспроводная отладка для Shizuku.</li>
       <li>
         <code>adb</code> из
-        <a href="https://developer.android.com/tools/releases/platform-tools">Android Platform Tools</a>.
+        <a href="https://developer.android.com/tools/releases/platform-tools">Android Platform Tools</a>
+        — или Shizuku и Termux, если обходитесь без компьютера.
       </li>
     </ul>
 
@@ -194,10 +198,59 @@
       — <code>:0</code> или <code>null</code>.
     </p>
 
-    <h2>Беспроводная отладка</h2>
+    <h2>Без компьютера: Shizuku</h2>
     <p>
-      На Android 11 и новее можно обойтись без кабеля: «Для разработчиков» →
-      «Отладка по Wi-Fi» → «Подключение по коду». Сопряжение:
+      Если нет кабеля и ПК, разрешение можно выдать через
+      <a href="https://shizuku.rikka.app/">Shizuku</a> — приложение, которое
+      запускает shell-сервис с правами ADB. Нужен Android 11+ и Wi-Fi, root не
+      требуется.
+    </p>
+    <ol>
+      <li>
+        Установите Shizuku из Google Play или с
+        <a href="https://github.com/RikkaApps/Shizuku/releases">GitHub</a>.
+      </li>
+      <li>Включите «Для разработчиков» → «Отладка по Wi-Fi».</li>
+      <li>
+        Откройте Shizuku → «Запустить» → «Сопряжение». Затем в «Отладке по
+        Wi-Fi» нажмите «Подключение по коду» и введите код в уведомление
+        Shizuku.
+      </li>
+      <li>
+        Установите Termux. В Shizuku откройте «Использовать Shizuku в
+        терминале» и выберите каталог Termux.
+      </li>
+      <li>
+        В Termux запустите <code>rish</code> и выполните команды без
+        <code>adb shell</code>:
+      </li>
+    </ol>
+    <pre><code>rish
+pm grant cc.iinv.app android.permission.WRITE_SECURE_SETTINGS
+appops set cc.iinv.app android:get_usage_stats allow
+exit</code></pre>
+    <p>
+      Для Lite замените пакет на <code>cc.iinv.app.lite</code>. Если команда
+      <code>rish</code> не найдена, запустите <code>~/rish</code>.
+    </p>
+    <div class="note">
+      Shizuku нужен только на время выдачи разрешения. После этого его можно
+      остановить или удалить — разрешение IINV сохранится. После перезагрузки
+      Shizuku запускается заново (на Android 11+ снова через отладку по Wi-Fi),
+      но выданное разрешение не сбрасывается.
+    </div>
+    <p>
+      На Android 10 и старше без root Shizuku запускается только с компьютера:
+      беспроводная отладка появилась в Android 11. На рутированном устройстве
+      можно выбрать запуск через root. На MIUI/HyperOS для Shizuku также
+      включите «Отладка по USB (Настройки безопасности)».
+    </p>
+
+    <h2>Беспроводная отладка с компьютером</h2>
+    <p>
+      Если компьютер есть, а кабеля нет, на Android 11 и новее можно
+      подключиться по Wi-Fi: «Для разработчиков» → «Отладка по Wi-Fi» →
+      «Подключение по коду». Сопряжение:
     </p>
     <pre><code>adb pair 192.168.1.10:41234
 adb connect 192.168.1.10:5555</code></pre>
@@ -234,9 +287,10 @@ adb shell appops set cc.iinv.app android:get_usage_stats deny</code></pre>
     </ul>
 
     <div class="card">
-      <b>Коротко:</b> включите отладку по USB, выполните
-      <code>adb shell pm grant &lt;пакет&gt; android.permission.WRITE_SECURE_SETTINGS</code>
-      и нажмите ↺ в настройках прокси. Для App Monitor добавьте
+      <b>Коротко:</b> с компьютером — включите отладку по USB и выполните
+      <code>adb shell pm grant &lt;пакет&gt; android.permission.WRITE_SECURE_SETTINGS</code>;
+      без компьютера — те же команды в <code>rish</code> через Shizuku. Затем
+      нажмите ↺ в настройках прокси. Для App Monitor добавьте
       <code>appops set &lt;пакет&gt; android:get_usage_stats allow</code>.
     </div>
 
@@ -254,6 +308,21 @@ adb shell pm grant cc.iinv.app.lite android.permission.WRITE_SECURE_SETTINGS</co
       For per-app proxy rules (Full only) also run:
     </p>
     <pre><code>adb shell appops set cc.iinv.app android:get_usage_stats allow</code></pre>
+    <p>
+      Without a computer, run the same commands through Shizuku (Android 11+,
+      wireless debugging). Install Shizuku and Termux, start Shizuku, enable
+      "Use Shizuku in terminal apps", then run in Termux:
+    </p>
+    <pre><code>rish
+pm grant cc.iinv.app android.permission.WRITE_SECURE_SETTINGS
+appops set cc.iinv.app android:get_usage_stats allow
+exit</code></pre>
+    <p>
+      Shizuku is only needed while granting. Stopping or uninstalling it does
+      not revoke the permission; the grant also survives reboots and app
+      updates. On MIUI/HyperOS enable "USB debugging (Security settings)" for
+      Shizuku as well.
+    </p>
     <p>
       Reboots and app updates keep the grant; uninstalling the app resets it.
       Without the grant, use TUN mode (Full) or configure the Wi-Fi proxy
