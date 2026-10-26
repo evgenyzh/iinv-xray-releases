@@ -51,7 +51,7 @@ ef9fdd0f8b028ac28535dbfd58f947fbeeca11b28093d10759c93574b79b6cb9  iinv-lite-v3.1
 - **Локальные JSON-правки** не затираются: при обновлении показывается diff,
   можно применить версию провайдера или оставить свою.
 - **Автопрокси**: включает системный прокси при подключении. Нужно одноразовое
-  разрешение через ADB — [инструкция](adb.html).
+  разрешение через ADB — [инструкция](https://evgenyzh.github.io/iinv-xray-releases/adb.html).
 - **Мониторинг**: статистика трафика, состояние серверов и управление
   балансировщиками.
 - **Темы**: режим (авто / светлая / тёмная) и стиль (Techno / Strict)
@@ -79,7 +79,7 @@ ef9fdd0f8b028ac28535dbfd58f947fbeeca11b28093d10759c93574b79b6cb9  iinv-lite-v3.1
 4. Требуется Android 8.0 или новее.
 
 Для автопрокси (автоматическая установка системного прокси) нужно одноразовое
-разрешение через ADB — [инструкция](adb.html). Без него используйте TUN-режим
+разрешение через ADB — [инструкция](https://evgenyzh.github.io/iinv-xray-releases/adb.html). Без него используйте TUN-режим
 (Full) или настройте прокси в Wi-Fi вручную.
 
 Проверка целостности:
@@ -119,7 +119,7 @@ tracking.
 - **Local JSON edits** are preserved: an update shows a diff, so you can apply
   the provider version or keep yours.
 - **Auto-proxy**: sets the system proxy when the connection starts. Requires a
-  one-time ADB grant — [instructions](adb.html).
+  one-time ADB grant — [instructions](https://evgenyzh.github.io/iinv-xray-releases/adb.html).
 - **Monitoring**: traffic stats, server state and balancer control.
 - **Themes**: mode (auto / light / dark) and style (Techno / Strict) are
   configured separately.
@@ -146,7 +146,7 @@ tracking.
 4. Android 8.0 or newer is required.
 
 Auto-proxy (setting the system proxy automatically) needs a one-time ADB grant
-— [instructions](adb.html). Without it, use TUN mode (Full) or configure the
+— [instructions](https://evgenyzh.github.io/iinv-xray-releases/adb.html). Without it, use TUN mode (Full) or configure the
 proxy in Wi-Fi manually.
 
 Verify integrity:
