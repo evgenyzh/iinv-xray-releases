@@ -1,18 +1,18 @@
 {
-  "version": "3.1.1",
-  "versionCode": 30101,
-  "publishedAt": "2026-10-25",
-  "releaseUrl": "https://github.com/evgenyzh/iinv-xray-releases/releases/tag/v3.1.1",
+  "version": "3.2.0",
+  "versionCode": 30200,
+  "publishedAt": "2026-10-27",
+  "releaseUrl": "https://github.com/evgenyzh/iinv-xray-releases/releases/tag/v3.2.0",
   "assets": {
     "full": {
-      "name": "iinv-v3.1.1.apk",
-      "size": 146838455,
-      "sha256": "053693528b68aaffe9d16b829c5ce0d5f671c672fa82e10def6c4a1293b334d2"
+      "name": "iinv-v3.2.0.apk",
+      "size": 146943407,
+      "sha256": "4706000f698a02c5e1d821f4c719ff2955a5e8f2d9fbf025c7859ba013f6a480"
     },
     "lite": {
-      "name": "iinv-lite-v3.1.1.apk",
-      "size": 146754911,
-      "sha256": "ef9fdd0f8b028ac28535dbfd58f947fbeeca11b28093d10759c93574b79b6cb9"
+      "name": "iinv-lite-v3.2.0.apk",
+      "size": 146900399,
+      "sha256": "399035e1d52d9c11faf635b91d845a84ffe83855c68e407a5c6b32748bfa9d75"
     }
   }
 }
