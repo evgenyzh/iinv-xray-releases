@@ -50,6 +50,8 @@ ef9fdd0f8b028ac28535dbfd58f947fbeeca11b28093d10759c93574b79b6cb9  iinv-lite-v3.1
   обновлении подписки.
 - **Локальные JSON-правки** не затираются: при обновлении показывается diff,
   можно применить версию провайдера или оставить свою.
+- **Автопрокси**: включает системный прокси при подключении. Нужно одноразовое
+  разрешение через ADB — [инструкция](adb.html).
 - **Мониторинг**: статистика трафика, состояние серверов и управление
   балансировщиками.
 - **Темы**: режим (авто / светлая / тёмная) и стиль (Techno / Strict)
@@ -63,13 +65,9 @@ ef9fdd0f8b028ac28535dbfd58f947fbeeca11b28093d10759c93574b79b6cb9  iinv-lite-v3.1
 |---|:---:|:---:|
 | Системный VPN (TUN) | да | — |
 | Локальный SOCKS/HTTP-прокси | да | да |
-| Автопрокси для приложений | да | — |
+| Правила для приложений (App Monitor) | да | — |
 | Диагностика и управление через adb | да | — |
 | Пакет | `cc.iinv.app` | `cc.iinv.app.lite` |
-
-Lite также публикуется в Google Play (закрытое тестирование). Подписи
-GitHub- и Play-сборок различаются: обновить одну другой нельзя, при смене
-канала нужна переустановка.
 
 ## Установка
 
@@ -79,6 +77,10 @@ GitHub- и Play-сборок различаются: обновить одну �
 3. Откройте APK и установите. Приложение не предоставляет серверы: нужна ваша
    подписка или JSON-конфиг.
 4. Требуется Android 8.0 или новее.
+
+Для автопрокси (автоматическая установка системного прокси) нужно одноразовое
+разрешение через ADB — [инструкция](adb.html). Без него используйте TUN-режим
+(Full) или настройте прокси в Wi-Fi вручную.
 
 Проверка целостности:
 
@@ -116,6 +118,8 @@ tracking.
   updates.
 - **Local JSON edits** are preserved: an update shows a diff, so you can apply
   the provider version or keep yours.
+- **Auto-proxy**: sets the system proxy when the connection starts. Requires a
+  one-time ADB grant — [instructions](adb.html).
 - **Monitoring**: traffic stats, server state and balancer control.
 - **Themes**: mode (auto / light / dark) and style (Techno / Strict) are
   configured separately.
@@ -128,13 +132,9 @@ tracking.
 |---|:---:|:---:|
 | System VPN (TUN) | yes | — |
 | Local SOCKS/HTTP proxy | yes | yes |
-| Per-app proxy switching | yes | — |
+| Per-app proxy rules (App Monitor) | yes | — |
 | adb diagnostics and control | yes | — |
 | Package | `cc.iinv.app` | `cc.iinv.app.lite` |
-
-Lite is also published on Google Play (closed testing). GitHub and Play builds
-use different signing keys and cannot update each other; switching channels
-requires a reinstall.
 
 ### Install
 
@@ -144,6 +144,10 @@ requires a reinstall.
 3. Open and install. The app does not provide servers: bring your own
    subscription or JSON config.
 4. Android 8.0 or newer is required.
+
+Auto-proxy (setting the system proxy automatically) needs a one-time ADB grant
+— [instructions](adb.html). Without it, use TUN mode (Full) or configure the
+proxy in Wi-Fi manually.
 
 Verify integrity:
 

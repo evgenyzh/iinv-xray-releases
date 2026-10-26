@@ -190,6 +190,10 @@
         <p>Порты, routing и DNS сохраняются при обновлении; локальные правки не затираются.</p>
       </div>
       <div class="card">
+        <h3>Автопрокси</h3>
+        <p>Системный прокси включается при подключении. <a href="adb.html">Нужно одноразовое разрешение ADB</a>.</p>
+      </div>
+      <div class="card">
         <h3>Мониторинг</h3>
         <p>Статистика трафика, состояние серверов и управление балансировщиками.</p>
       </div>
@@ -211,8 +215,9 @@
       <li>Требуется Android 8.0 или новее.</li>
     </ol>
     <p class="muted">
-      Lite также публикуется в Google Play (закрытое тестирование). Подписи
-      GitHub- и Play-сборок различаются: при смене канала нужна переустановка.
+      Для автопрокси нужно одноразовое разрешение через ADB —
+      <a href="adb.html">инструкция</a>. Без него используйте TUN-режим (Full)
+      или настройте прокси в Wi-Fi вручную.
     </p>
 
     <h2>English</h2>
@@ -220,14 +225,15 @@
       IINV is an Android client for Xray: system-wide VPN (TUN) or a local
       SOCKS/HTTP proxy. It works with your own subscription or JSON config.
       No accounts, ads or tracking. Full includes TUN, Lite is proxy-only.
-      Android 8.0+. See the
-      <a href="https://github.com/evgenyzh/iinv-xray-releases">releases page</a>
-      for downloads and checksums.
+      Android 8.0+. Auto-proxy needs a one-time ADB grant — see the
+      <a href="adb.html">guide</a>. Downloads and checksums are on the
+      <a href="https://github.com/evgenyzh/iinv-xray-releases">releases page</a>.
     </p>
   </main>
 
   <footer class="wrap">
     <a href="https://github.com/evgenyzh/iinv-xray-releases">GitHub</a> ·
+    <a href="adb.html">ADB-разрешение</a> ·
     <a href="https://github.com/evgenyzh/iinv-xray-releases/releases">Все релизы</a> ·
     <a href="privacy.html">Политика конфиденциальности</a>
     <p>Сборки собираются автоматически из тегов. SHA-256 и описания релизов обновляются вместе с релизом.</p>
