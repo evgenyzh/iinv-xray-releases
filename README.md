@@ -119,7 +119,7 @@ tracking.
 - **Local JSON edits** are preserved: an update shows a diff, so you can apply
   the provider version or keep yours.
 - **Auto-proxy**: sets the system proxy when the connection starts. Requires a
-  one-time ADB or Shizuku grant — [instructions](https://evgenyzh.github.io/iinv-xray-releases/adb.html).
+  one-time ADB or Shizuku grant — [instructions](https://evgenyzh.github.io/iinv-xray-releases/adb.html#english).
 - **Monitoring**: traffic stats, server state and balancer control.
 - **Themes**: mode (auto / light / dark) and style (Techno / Strict) are
   configured separately.
@@ -146,7 +146,7 @@ tracking.
 4. Android 8.0 or newer is required.
 
 Auto-proxy (setting the system proxy automatically) needs a one-time ADB or Shizuku grant
-— [instructions](https://evgenyzh.github.io/iinv-xray-releases/adb.html). Without it, use TUN mode (Full) or configure the
+— [instructions](https://evgenyzh.github.io/iinv-xray-releases/adb.html#english). Without it, use TUN mode (Full) or configure the
 proxy in Wi-Fi manually.
 
 Verify integrity:

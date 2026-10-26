@@ -51,6 +51,9 @@
     .back { color: var(--muted); text-decoration: none; font-size: 14px; }
     h1 { font-size: 34px; line-height: 1.2; margin: 18px 0 10px; letter-spacing: -0.02em; }
     h2 { font-size: 22px; margin: 34px 0 12px; }
+    h3 { font-size: 18px; margin: 24px 0 8px; }
+    .lang { margin: 12px 0 0; font-size: 14px; }
+    .top-link { font-size: 14px; font-weight: 400; margin-left: 10px; }
     p { margin: 10px 0; }
     .lead { color: var(--muted); font-size: 18px; }
     .card {
@@ -98,7 +101,7 @@
     footer a { color: var(--muted); }
   </style>
 </head>
-<body>
+<body id="top">
   <header class="wrap">
     <a class="back" href="./">← IINV</a>
     <h1>Auto-proxy и разрешение ADB</h1>
@@ -106,6 +109,7 @@
       Как выдать приложению одноразовое разрешение, чтобы системный прокси
       включался и выключался автоматически.
     </p>
+    <p class="lang"><a href="#english">English version ↓</a></p>
   </header>
 
   <main class="wrap">
@@ -294,41 +298,202 @@ adb shell appops set cc.iinv.app android:get_usage_stats deny</code></pre>
       <code>appops set &lt;пакет&gt; android:get_usage_stats allow</code>.
     </div>
 
-    <h2>English</h2>
-    <p>
-      Auto-proxy needs the <code>WRITE_SECURE_SETTINGS</code> permission, which
-      cannot be granted from the Android UI. Enable USB debugging, connect the
-      phone and run one of these commands once:
+    <h2 id="english">English <a class="top-link" href="#top">↑ Русский</a></h2>
+    <p class="lead">
+      How to grant the one-time permission that lets IINV enable and disable the
+      system proxy automatically.
     </p>
-    <pre><code># Full
-adb shell pm grant cc.iinv.app android.permission.WRITE_SECURE_SETTINGS
-# Lite
-adb shell pm grant cc.iinv.app.lite android.permission.WRITE_SECURE_SETTINGS</code></pre>
+
+    <h3>Why this is needed</h3>
     <p>
-      For per-app proxy rules (Full only) also run:
+      Auto-proxy sets Android's global HTTP proxy when a connection starts and
+      clears it when the connection stops. Regular apps cannot change this
+      setting: it requires <code>WRITE_SECURE_SETTINGS</code>, which cannot be
+      granted from the Android UI. Grant it once over ADB from a computer.
+    </p>
+    <ul>
+      <li>No root required.</li>
+      <li>The grant survives reboots and app updates.</li>
+      <li>Uninstalling the app resets it; grant it again after reinstalling.</li>
+      <li>
+        Without the grant, TUN mode (Full) and the manual Wi-Fi proxy still
+        work.
+      </li>
+    </ul>
+
+    <h3>Requirements</h3>
+    <ul>
+      <li>
+        A computer running Windows, macOS or Linux — or Shizuku on the phone
+        (Android 11+).
+      </li>
+      <li>
+        A USB cable with USB debugging enabled — or wireless debugging for
+        Shizuku.
+      </li>
+      <li>
+        <code>adb</code> from
+        <a href="https://developer.android.com/tools/releases/platform-tools">Android Platform Tools</a>
+        — or Shizuku and Termux if you have no computer.
+      </li>
+    </ul>
+
+    <h3>Step 1. Enable USB debugging</h3>
+    <ol>
+      <li>
+        Settings → About phone → tap "Build number" seven times to unlock
+        Developer options.
+      </li>
+      <li>
+        Settings → System → Developer options → enable "USB debugging".
+      </li>
+    </ol>
+    <div class="note">
+      On MIUI and HyperOS also enable "USB debugging (Security settings)" in
+      Developer options. Without it <code>pm grant</code> may return
+      <code>not allowed</code>.
+    </div>
+
+    <h3>Step 2. Connect the phone</h3>
+    <p>Connect the phone and check that the computer sees it:</p>
+    <pre><code>adb devices</code></pre>
+    <p>
+      You should see the device with the <code>device</code> status. If it says
+      <code>unauthorized</code>, unlock the phone and confirm the "Allow USB
+      debugging" prompt.
+    </p>
+
+    <h3>Step 3. Grant the permission</h3>
+    <p class="label">Full (<code>cc.iinv.app</code>):</p>
+    <pre><code>adb shell pm grant cc.iinv.app android.permission.WRITE_SECURE_SETTINGS</code></pre>
+    <p class="label">Lite (<code>cc.iinv.app.lite</code>):</p>
+    <pre><code>adb shell pm grant cc.iinv.app.lite android.permission.WRITE_SECURE_SETTINGS</code></pre>
+    <p>
+      The command prints nothing on success. Check in the app: Maintenance →
+      Proxy → refresh (↺).
+    </p>
+
+    <h3>Per-app rules</h3>
+    <p>
+      To let IINV switch the proxy per app (App Monitor), grant usage access. It
+      is available in the Full build only:
     </p>
     <pre><code>adb shell appops set cc.iinv.app android:get_usage_stats allow</code></pre>
     <p>
-      Without a computer, run the same commands through Shizuku (Android 11+,
-      wireless debugging). Install Shizuku and Termux, start Shizuku, enable
-      "Use Shizuku in terminal apps", then run in Termux:
+      You can also enable it without ADB: Settings → Apps → Special app access
+      → Usage access → IINV.
     </p>
+
+    <h3>Step 4. Verify</h3>
+    <p>
+      Connect in IINV and check the home screen: it should say "System proxy:
+      active". Or run:
+    </p>
+    <pre><code>adb shell settings get global http_proxy</code></pre>
+    <p>
+      While connected the value looks like <code>127.0.0.1:10808</code> (the
+      port depends on the profile). After disconnecting it is <code>:0</code>
+      or <code>null</code>.
+    </p>
+
+    <h3>Without a computer: Shizuku</h3>
+    <p>
+      If you have no cable or PC, grant the permission through
+      <a href="https://shizuku.rikka.app/">Shizuku</a> — an app that runs a
+      shell service with ADB privileges. It requires Android 11+ and Wi-Fi; no
+      root.
+    </p>
+    <ol>
+      <li>
+        Install Shizuku from Google Play or
+        <a href="https://github.com/RikkaApps/Shizuku/releases">GitHub</a>.
+      </li>
+      <li>Enable Developer options → Wireless debugging.</li>
+      <li>
+        Open Shizuku → Start → Pairing. Then tap "Pair device with pairing code"
+        in Wireless debugging and enter the code in Shizuku's notification.
+      </li>
+      <li>
+        Install Termux. In Shizuku open "Use Shizuku in terminal apps" and
+        select the Termux directory.
+      </li>
+      <li>
+        In Termux run <code>rish</code> and execute the commands without
+        <code>adb shell</code>:
+      </li>
+    </ol>
     <pre><code>rish
 pm grant cc.iinv.app android.permission.WRITE_SECURE_SETTINGS
 appops set cc.iinv.app android:get_usage_stats allow
 exit</code></pre>
     <p>
-      Shizuku is only needed while granting. Stopping or uninstalling it does
-      not revoke the permission; the grant also survives reboots and app
-      updates. On MIUI/HyperOS enable "USB debugging (Security settings)" for
-      Shizuku as well.
+      For Lite replace the package with <code>cc.iinv.app.lite</code>. If
+      <code>rish</code> is not found, run <code>~/rish</code>.
     </p>
+    <div class="note">
+      Shizuku is only needed while granting. You can stop or uninstall it
+      afterwards; IINV keeps the permission. After a reboot Shizuku has to be
+      started again (wireless debugging on Android 11+), but the grant stays.
+    </div>
     <p>
-      Reboots and app updates keep the grant; uninstalling the app resets it.
-      Without the grant, use TUN mode (Full) or configure the Wi-Fi proxy
-      manually. On MIUI/HyperOS enable "USB debugging (Security settings)" if
-      <code>pm grant</code> returns <code>not allowed</code>.
+      On Android 10 and older, Shizuku without root can only be started from a
+      computer: wireless debugging arrived in Android 11. On a rooted device
+      you can start it through root. On MIUI/HyperOS enable "USB debugging
+      (Security settings)" for Shizuku as well.
     </p>
+
+    <h3>Wireless debugging with a computer</h3>
+    <p>
+      If you have a computer but no cable, Android 11+ can connect over Wi-Fi:
+      Developer options → Wireless debugging → Pair device with pairing code.
+    </p>
+    <pre><code>adb pair 192.168.1.10:41234
+adb connect 192.168.1.10:5555</code></pre>
+    <p>
+      The address and port are shown on the phone. The rest of the commands are
+      the same.
+    </p>
+
+    <h3>Revoking the permission</h3>
+    <pre><code>adb shell pm revoke cc.iinv.app android.permission.WRITE_SECURE_SETTINGS
+adb shell appops set cc.iinv.app android:get_usage_stats deny</code></pre>
+    <p>
+      For Lite use <code>cc.iinv.app.lite</code>. Uninstalling the app also
+      resets the permissions.
+    </p>
+
+    <h3>Troubleshooting</h3>
+    <ul>
+      <li>
+        <code>no devices/emulators found</code> — check the cable, USB mode
+        (file transfer) and drivers; Linux may need udev rules.
+      </li>
+      <li>
+        <code>unauthorized</code> — unlock the phone and confirm the computer's
+        fingerprint.
+      </li>
+      <li>
+        <code>not allowed</code> — enable "USB debugging (Security settings)"
+        on MIUI/HyperOS.
+      </li>
+      <li>
+        <code>Unknown package</code> — check the package name (Full or Lite)
+        and that the app is installed in the current profile.
+      </li>
+      <li>
+        The permission is granted but auto-proxy does not work — press ↺ in
+        proxy settings, reconnect, and make sure no other proxy or VPN is
+        active.
+      </li>
+    </ul>
+
+    <div class="card">
+      <b>In short:</b> with a computer, enable USB debugging and run
+      <code>adb shell pm grant &lt;package&gt; android.permission.WRITE_SECURE_SETTINGS</code>;
+      without one, run the same commands in <code>rish</code> via Shizuku. Then
+      press ↺ in proxy settings. For App Monitor add
+      <code>appops set &lt;package&gt; android:get_usage_stats allow</code>.
+    </div>
   </main>
 
   <footer class="wrap">
