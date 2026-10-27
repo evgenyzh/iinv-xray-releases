@@ -16,18 +16,18 @@ IINV — Android-клиент для Xray. Работает с вашей под
 трекинга.
 
 <!-- latest:start -->
-**Последний релиз / Latest release:** [IINV 3.2.0](https://github.com/evgenyzh/iinv-xray-releases/releases/tag/v3.2.0) · 2026-10-27
+**Последний релиз / Latest release:** [IINV 3.2.1](https://github.com/evgenyzh/iinv-xray-releases/releases/tag/v3.2.1) · 2026-10-27
 
 | Вариант | Файл | Размер |
 |:--|:--|--:|
-| Full · TUN + proxy | [`iinv-v3.2.0.apk`](https://github.com/evgenyzh/iinv-xray-releases/releases/download/v3.2.0/iinv-v3.2.0.apk) | 140.1 MB |
-| Lite · proxy only | [`iinv-lite-v3.2.0.apk`](https://github.com/evgenyzh/iinv-xray-releases/releases/download/v3.2.0/iinv-lite-v3.2.0.apk) | 140.1 MB |
+| Full · TUN + proxy | [`iinv-v3.2.1.apk`](https://github.com/evgenyzh/iinv-xray-releases/releases/download/v3.2.1/iinv-v3.2.1.apk) | 140.1 MB |
+| Lite · proxy only | [`iinv-lite-v3.2.1.apk`](https://github.com/evgenyzh/iinv-xray-releases/releases/download/v3.2.1/iinv-lite-v3.2.1.apk) | 140.1 MB |
 
 SHA-256:
 
 ```text
-4706000f698a02c5e1d821f4c719ff2955a5e8f2d9fbf025c7859ba013f6a480  iinv-v3.2.0.apk
-399035e1d52d9c11faf635b91d845a84ffe83855c68e407a5c6b32748bfa9d75  iinv-lite-v3.2.0.apk
+8a834fdfb86022019ba6815b48d7b70b3f7d6c3a25b192ab107a407afd774a9a  iinv-v3.2.1.apk
+b4070c86342bc35e247a617eb6d25d02954694b627c0ee51140ea5114d405cd9  iinv-lite-v3.2.1.apk
 ```
 <!-- latest:end -->
 
