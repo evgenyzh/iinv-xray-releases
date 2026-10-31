@@ -15,6 +15,9 @@ IINV — Android-клиент для Xray. Работает с вашей под
 системный VPN (TUN) либо локальный SOCKS/HTTP-прокси. Без аккаунтов, рекламы и
 трекинга.
 
+**История изменений:** [CHANGELOG.md](https://github.com/evgenyzh/iinv-xray-releases/blob/main/CHANGELOG.md) ·
+[все релизы](https://github.com/evgenyzh/iinv-xray-releases/releases)
+
 <!-- latest:start -->
 **Последний релиз / Latest release:** [IINV 3.2.2](https://github.com/evgenyzh/iinv-xray-releases/releases/tag/v3.2.2) · 2026-10-30
 
@@ -54,6 +57,17 @@ f089a7923b629dbca2983bc6b01333520e3c1681350ad28bdc048e75c36de9e4  iinv-v3.2.2.ap
   разрешение через ADB или Shizuku — [инструкция](https://evgenyzh.github.io/iinv-xray-releases/adb.html).
 - **Мастер разрешений**: Shizuku без компьютера или ADB с ПК, подсказки по
   режиму разработчика, Wi-Fi- и USB-отладке, копирование команд.
+- **Восстановление подключения**: после перезагрузки приложение возвращает
+  активный TUN- или PROXY-профиль, если это включено. Если восстановить не
+  удалось, системный прокси снимается и интернет работает напрямую. Для TUN
+  поддерживается системный Always-on VPN.
+- **Автозапуск и батарея**: подсказки для Xiaomi/Redmi/POCO, Huawei/Honor,
+  Oppo/Realme/OnePlus, Vivo/iQOO и Samsung, а также карточка состояния батареи.
+- **Обновление подписки**: ночное автообновление, проверка конфигурации перед
+  применением, откат при ошибке и уведомления.
+- **Геоданные**: автоматическая загрузка `geoip.dat`/`geosite.dat` с прогрессом
+  и проверкой целостности.
+- **Бэкап**: экспорт и импорт профилей, настроек и geo-источников.
 - **Мониторинг**: статистика трафика, состояние серверов и управление
   балансировщиками.
 - **Темы**: режим (авто / светлая / тёмная) и стиль (Techno / Strict)
@@ -69,6 +83,10 @@ f089a7923b629dbca2983bc6b01333520e3c1681350ad28bdc048e75c36de9e4  iinv-v3.2.2.ap
 | Локальный SOCKS/HTTP-прокси | да | да |
 | Правила для приложений (App Monitor) | да | — |
 | Диагностика и управление через adb | да | — |
+| Восстановление после перезагрузки | да | да |
+| Always-on VPN (Android) | да | — |
+| Автозапуск и батарея | да | да |
+| Мастер разрешений Shizuku/ADB | да | да |
 | Пакет | `cc.iinv.app` | `cc.iinv.app.lite` |
 
 ## Установка
@@ -104,6 +122,9 @@ IINV is an Android client for Xray. It works with your own subscription or JSON
 config: system-wide VPN (TUN) or a local SOCKS/HTTP proxy. No accounts, ads or
 tracking.
 
+**Changelog:** [CHANGELOG.md](https://github.com/evgenyzh/iinv-xray-releases/blob/main/CHANGELOG.md) ·
+[all releases](https://github.com/evgenyzh/iinv-xray-releases/releases)
+
 <p align="center">
   <img src="assets/screen-en-main.png" width="205" alt="Home screen">
   <img src="assets/screen-en-profiles.png" width="205" alt="Profiles">
@@ -124,6 +145,16 @@ tracking.
   one-time ADB or Shizuku grant — [instructions](https://evgenyzh.github.io/iinv-xray-releases/adb.html#english).
 - **Permission wizard**: Shizuku without a computer or ADB with a PC, with hints
   for developer options, wireless/USB debugging and copyable commands.
+- **Connection recovery**: after a reboot the app restores the active TUN or
+  PROXY profile when the setting is enabled. If recovery fails, the system proxy
+  is cleared and the internet works directly. TUN supports Android Always-on VPN.
+- **Autostart and battery**: guidance for Xiaomi/Redmi/POCO, Huawei/Honor,
+  Oppo/Realme/OnePlus, Vivo/iQOO and Samsung, plus a battery state card.
+- **Subscription updates**: nightly auto-update, config validation before apply,
+  rollback on failure and notifications.
+- **Geodata**: automatic `geoip.dat`/`geosite.dat` download with progress and
+  integrity checks.
+- **Backup**: export and import profiles, settings and geo sources.
 - **Monitoring**: traffic stats, server state and balancer control.
 - **Themes**: mode (auto / light / dark) and style (Techno / Strict) are
   configured separately.
@@ -138,6 +169,10 @@ tracking.
 | Local SOCKS/HTTP proxy | yes | yes |
 | Per-app proxy rules (App Monitor) | yes | — |
 | adb diagnostics and control | yes | — |
+| Restore after reboot | yes | yes |
+| Always-on VPN (Android) | yes | — |
+| Autostart and battery | yes | yes |
+| Shizuku/ADB permission wizard | yes | yes |
 | Package | `cc.iinv.app` | `cc.iinv.app.lite` |
 
 ### Install
