@@ -588,12 +588,11 @@
 
 ### Русский
 
-- Технический выпуск: release workflow создаёт релиз и в приватном репозитории.
+- Технический выпуск: обновлён release workflow; изменений в приложении нет.
 
 ### English
 
-- Technical release: the release workflow also creates a release in the private
-  repository.
+- Technical release: release workflow update; no app changes.
 
 ## 1.3.1 — 2026-05-01
 
